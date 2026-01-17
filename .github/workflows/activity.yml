@@ -1,0 +1,25 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make change
+        run: |
+          echo "Update $(date)" >> activity.txt
+
+      - name: Commit
+        run: |
+          git config --global user.name "alonna22ph"
+          git config --global user.email "cacka_cubage@outlook.com"
+          git add .
+          git commit -m "Automated activity $(date)" || echo "No changes"
+          git push
