@@ -19,7 +19,7 @@ jobs:
       - name: Commit
         run: |
           git config --global user.name "alonna22ph"
-          git config --global user.email "cacka_cubage@outlook.com"
+          git config --global user.email "alonna22ph@outlook.com"
           git add .
           git commit -m "Automated activity $(date)" || echo "No changes"
           git push
